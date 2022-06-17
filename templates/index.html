@@ -1,6 +1,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta http-equiv="refresh" content="300">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
         <style>
@@ -29,7 +30,7 @@
         <title>Ekky Armandi | UpWork RSS Feed</title>
     </head>
     <body style="background-color: whitesmoke">
-        <div class="container mt-5 rounded-3 border" style="width: 800px; height: 100vh; background-color: white">
+        <div class="container mt-5 rounded-3 border" style="width: 800px; background-color: white">
             <div class="row">
                 <h1 class="col-4 m-4 align-self-end" style="color: #14a800">My Job Feed</h1>
                 <div class="col row align-self-center me-4">
@@ -46,16 +47,21 @@
                     </span>
                 </div>
             </div>
+            {% for model in models %}
             <hr />
             <div class="mx-4">
-                <h4 class="text mb-3"><a target="_blank" href="#">Employment contract and contractor contract</a></h4>
-                <p class="mb-1" style="font-size: 14px; color: gray"><span class="fw-semibold">Hourly: $25.00-$90.00</span> - 2 minutes ago</p>
-                <p class="text-justify">
-                    I need an employment contract and a contractor contract. Both should include a NDA with the employee / contractor and that they are not allowed to contact my relations for 3 years when they stop working for me.
+                <h5 class="text mb-3"><a target="_blank" href="{{model.link}}">{{model.title}}</a></h5>
+                <p class="mb-1" style="font-size: 14px; color: gray">
+                    <span class="fw-semibold">{{model.budget}}</span> - 
+                    <span>{{model.timestamp}}</span>
                 </p>
-                <span class="text py-1 px-2 rounded-pill fw-semibold" id="tags">TAGS</span>
-                <p class="text-end"><i class="fa-solid fa-location-dot me-2" style="color: #b7b7b7"></i>Tenggarong</p>
+                <p class="text-justify">{{model.description}}</p>
+                {% for tag in model.tags %}
+                    <span class="text py-1 px-2 my-5 mx-1 rounded-pill fw-semibold" id="tags">{{tag}}</span>
+                {% endfor %}
+                <p class="text-end my-2"><i class="fa-solid fa-location-dot me-2" style="color: #b7b7b7"></i>{{model.country}}</p>
             </div>
+            {% endfor %}
         </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
