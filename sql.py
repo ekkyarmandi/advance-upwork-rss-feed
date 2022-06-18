@@ -89,13 +89,14 @@ def query_all(database: str, table: str = "jobs", time_constrain: int = 3) -> li
             "printed": i[2]
         }
         
-        # filter based on time constrain variable
-        if entry['posted_on'] <= time_constrain:
+        # filter based on time constrain variable and showed variable
+        if entry['posted_on'] <= time_constrain and entry['printed']==False:
+            cur.execute(f"UPDATE {table} SET printed=1 WHERE hash=?",(entry['hash'],))
             cur.execute(f"SELECT * FROM {table} WHERE hash=?",(entry['hash'],))
             result = cur.fetchone()
             results.append(Entry(result))
         
-        # delete the post if the post is outdated
+        # delete the post if the post is older than the time constrain
         elif entry['posted_on'] > time_constrain:
             cur.execute(f"DELETE FROM {table} WHERE hash=?",(entry['hash'],))
 
