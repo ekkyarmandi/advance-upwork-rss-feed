@@ -1,9 +1,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="refresh" content="60" />
-        <title>Ekky Armandi | UpWork RSS Feed</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <title>UpWork RSS Feed | Ekky Armandi</title>
+        <link rel="icon" type="image/x-icon" href="/static/upwork_tile_logo_icon_167715.ico" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
         <style>
             text {
@@ -21,7 +21,8 @@
                 text-decoration: none;
                 color: black;
             }
-            a:hover {
+            a:hover,
+            .green-text {
                 color: #14a800;
             }
             span.card {
@@ -32,64 +33,32 @@
     </head>
     <body style="background-color: whitesmoke" onload="">
         <div class="container mt-5 rounded-3 border" style="width: 800px; background-color: white">
-            <div class="row">
-                <h1 class="col-4 m-4 align-self-end" style="color: #14a800">My Job Feed</h1>
-                <div class="col row align-self-center me-4">
-                    <span class="card col p-2 mt-3 mx-2 text-center">
-                        <h5>
-                            <strike>Total Earnings </strike>
-                            <!-- <p class="mb-0" style="font-size: 12">(since Aug 2021)</p> -->
-                        </h5>
-                        <p class="mb-1 fw-bold" style="font-size: 24">XXX</p>
-                    </span>
-                    <span class="card col p-2 mt-3 mx-2 text-center">
-                        <h5><strike>Current Balance</strike></h5>
-                        <p class="mb-1 fw-bold" style="font-size: 24">XXX</p>
-                    </span>
+            <div class="row align-items-end">
+                <h1 class="col m-4 mb-1 green-text"><a class="green-text" target="_blank" href="https://www.upwork.com/nx/find-work/">My Job Feed</a></h1>
+                <p class="text-end col me-4 mb-1 fw-semibold green-text" value="{{results}}" id="results">{{results}} Job Posts Found</p>
+            </div>
+            <div id="feed">
+                {% for model in models %}
+                <hr />
+                <div class="mx-4">
+                    <p class="text mb-1 fw-semibold green-text" style="font-size: medium">{{model.category}}</p>
+                    <h5 class="text mb-3"><a target="_blank" href="{{model.link}}">{{model.title}}</a></h5>
+                    <p class="mb-1" style="font-size: 14px; color: gray">
+                        <span class="fw-semibold">{{model.budget}}</span> -
+                        <span class="timestamp" timestamp="{{model.timestamp}}">{{model.timestr}}</span>
+                    </p>
+                    <p class="text-break">{{model.description}}</p>
+                    {% for tag in model.tags %}
+                    <div class="text py-1 px-2 my-1 rounded-pill d-inline-block" id="tags">{{tag}}</div>
+                    {% endfor %}
+                    <p class="text-end my-2"><i class="fa-solid fa-location-dot me-2" style="color: #b7b7b7"></i>{{model.country}}</p>
                 </div>
-            </div>
-            {% for model in models %}
-            <hr />
-            <div class="mx-4">
-                <h5 class="text mb-0"><a target="_blank" href="{{model.link}}">{{model.title}}</a></h5>
-                <p class="text mb-3 fw-semibold" style="font-size: medium; color: #14a800">{{model.category}}</p>
-                <p class="mb-1" style="font-size: 14px; color: gray">
-                    <span class="fw-semibold">{{model.budget}}</span> -
-                    <span class="timestamp" timestamp="{{model.timestamp}}">{{model.timestr}}</span>
-                </p>
-                <p class="text-justify">{{model.description}}</p>
-                {% for tag in model.tags %}
-                <div class="text py-1 px-2 my-1 rounded-pill d-inline-block" id="tags">{{tag}}</div>
                 {% endfor %}
-                <p class="text-end my-2"><i class="fa-solid fa-location-dot me-2" style="color: #b7b7b7"></i>{{model.country}}</p>
             </div>
-            {% endfor %}
         </div>
     </body>
-    <script>
-        function countTime() {
-            // define time to str function
-            function time2str(seconds) {
-                const hours = Math.floor(seconds / 3600);
-                const minutes = Math.round((seconds % 3600) / 60);
-                if (hours == 0.0) {
-                    return minutes + "m ago";
-                } else {
-                    return hours + "h " + minutes + "m ago";
-                }
-            }
-            // define current timestamp
-            const now = new Date().getTime() / 1e3;
-
-            // get all tag with timestamp class name
-            const spans = document.getElementsByClassName("timestamp");
-            for (let i = 0; i < spans.length; i++) {
-                const timestamp = spans[i].getAttribute("timestamp");
-                const gap = new Date(now - timestamp);
-                spans[i].innerHTML = time2str(gap);
-            }
-        }
-        setInterval(countTime, 60 * 1e3);
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="/static/js/autoRequest.js"></script>
+    <script src="/static/js/countTime.js"></script>
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </html>

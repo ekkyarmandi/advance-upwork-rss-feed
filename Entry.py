@@ -14,7 +14,7 @@ class Entry:
         self.timestamp = entry[5]
         self.timestr = self.calculate_time(entry[5])
         self.category=entry[6]
-        self.tags=[tag.replace(" ","") for tag in entry[7].split(",")]
+        self.tags=[tag for tag in entry[7].split(",")]
         self.country=entry[8]
 
         # refine description text

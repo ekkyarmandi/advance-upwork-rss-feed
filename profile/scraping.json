@@ -5,10 +5,9 @@
         "scrape",
         "scrapy",
         "python",
-        "text mining",
-        "text classification",
         "flask",
-        "bootstrap"
+        "bootstrap",
+        "data visualization"
     ],
     "title": [
         "scrapy",
