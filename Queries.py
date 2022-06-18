@@ -9,7 +9,7 @@ class Queries:
         title=None,
         ontology_skill_uid=None,
         subcategory2_uid=None,
-        # location=location,
+        location=location,
         sort="recency"
     )
 

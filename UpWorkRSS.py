@@ -21,7 +21,7 @@ class UpWorkRSS:
     def digest(self):
         ''' Digest rss.txt and turn it into variable before use it as url parameter'''
 
-        with open("rss.txt",encoding='utf-8') as f:
+        with open("data/rss.txt",encoding='utf-8') as f:
             params = f.read().split("?")[1].split("&")
             params = {v.split("=")[0]:v.split("=")[1] for v in params}
 

@@ -11,7 +11,8 @@ class Entry:
         self.description=entry[2]
         self.link=entry[3]
         self.budget=entry[4]
-        self.timestamp=self.calculate_time(entry[5])
+        self.timestamp = entry[5]
+        self.timestr = self.calculate_time(entry[5])
         self.category=entry[6]
         self.tags=[tag.replace(" ","") for tag in entry[7].split(",")]
         self.country=entry[8]
@@ -37,16 +38,10 @@ class Entry:
         seconds = int(time.time()-timestamp)
         hours, seconds = divmod(seconds,3600)
         minutes, seconds = divmod(seconds,60)
-        if hours==0:
-            if minutes==1: return f"{minutes} minute ago"
-            else: return f"{minutes} minutes ago"
+        if hours == 0:
+            return f"{minutes}m ago"
         else:
-            if hours==1 and minutes==1:
-                return f"{hours} hour and {minutes} minute ago"
-            else:
-                if minutes==1: return f"{hours} hours and {minutes} minute ago"
-                elif hours==1: return f"{hours} hour and {minutes} minutes ago"
-                else: return f"{hours} hours and {minutes} minutes ago"
+            return f"{hours}h {minutes}m ago"
 
     def __str__(self):
         entry = dict(

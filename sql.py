@@ -126,6 +126,7 @@ def reset(database: str, table: str = "jobs") -> None:
 
 if __name__ == "__main__":
 
-    reset("data/jobs.db")
-    data = query_all("data/jobs.db")
-    print(data[-1])
+    # reset("data/jobs.db")
+    # data = query_all("data/jobs.db")
+    # print(data[-1])
+    clear("data/jobs.db")
