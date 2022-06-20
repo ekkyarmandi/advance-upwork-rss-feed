@@ -6,8 +6,7 @@
         "scrapy",
         "python",
         "flask",
-        "bootstrap",
-        "data visualization"
+        "bootstrap"
     ],
     "title": [
         "scrapy",
@@ -24,6 +23,7 @@
     ],
     "categories": [
         "Data Mining & Management",
-        "Data Extraction / ETL"
+        "Data Extraction / ETL",
+        "Back-End Development"
     ]
 }
