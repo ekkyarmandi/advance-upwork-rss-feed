@@ -1,6 +1,7 @@
 # import libraries
 import feedparser
 import json
+import time
 
 # import local functions and libraries
 from JobPost import JobPost
@@ -71,6 +72,7 @@ class UpWorkRSS:
             for entry in results['entries']:
                 job = JobPost(entry)
                 job.insert()
+            time.sleep(1)
 
 
 if __name__ == "__main__":

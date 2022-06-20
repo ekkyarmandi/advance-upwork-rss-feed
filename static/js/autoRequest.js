@@ -9,8 +9,6 @@ function autoRequest() {
                 let entries = JSON.parse(this.response);
                 let results = document.getElementById("results");
                 var total = parseInt(results.getAttribute("value"));
-                console.log(total);
-                console.log(entries.length);
                 total += entries.length;
                 results.setAttribute("value", total);
                 results.innerHTML = total + " Job Posts Found";
@@ -78,6 +76,7 @@ function autoRequest() {
                 alert("Network Error " + xhr.status);
             }
         };
+
         xhr.send();
     };
     // set the auto requests interval

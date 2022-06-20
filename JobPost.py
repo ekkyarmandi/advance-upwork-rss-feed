@@ -1,13 +1,22 @@
 from bs4 import BeautifulSoup
 import hashlib
-import sql
+import json
 import time
+import sql
 import re
 
 
 def refine_text(text):
     text = text.lstrip(":")
     return text.strip()
+
+def replace_sign(title):
+    signs = json.load(open("data/signs.json",encoding="utf-8"))
+    for sign, symbol in signs.items():
+        if sign in title:
+            title = title.replace(sign,symbol)
+    return title
+
 
 class JobPost:
 
@@ -24,7 +33,7 @@ class JobPost:
     def __init__(self, entry):
 
         # refine title and hashing it
-        self.hashing(entry['title'])
+        self.hashing(entry['title_detail']['value'])
 
         # refine the link
         self.link = entry['link']
@@ -42,8 +51,7 @@ class JobPost:
         self.timestamp = int(time.mktime(entry['published_parsed']))+(7*3600)
 
     def hashing(self, title):
-        title = title.strip("Upwork").strip()
-        self.title = " ".join(re.findall("[A-Za-z0-9]+",title))
+        self.title = replace_sign(title.replace(" - Upwork","").strip())
         self.hash = hashlib.md5(bytes(self.title,"utf-8")).hexdigest()
 
     def find_description(self,text):

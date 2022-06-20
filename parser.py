@@ -4,11 +4,16 @@ import time
 
 # clear the terminal
 import os
-os.system("cls")
+
+def clear():
+    os.system("cls")
 
 # run feed parser in loop
-print("feed parser running..",end="")
+clear()
 while True:
-    feed = UpWorkRSS("profile/scraping.json")
-    feed.get()
+    print("feed parser running")
+    parser = UpWorkRSS("profile/scraping.json")
+    parser.get()
+    print("feed parser on pause")
     time.sleep(60)
+    clear()
