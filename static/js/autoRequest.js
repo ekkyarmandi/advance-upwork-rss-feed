@@ -27,7 +27,7 @@ function autoRequest() {
                     // define title and link variables
                     const title = document.createElement("h5");
                     title.setAttribute("class", "text mb-3");
-                    title.innerHTML = "<a target='_blank' href='" + entry.link + "'>" + entry.title + "</a>";
+                    title.innerHTML = "<a target='_blank' href='" + entry.link + "'>" + entry.title + "</a><span id='red-asterix' style='color: red'>*</span>";
 
                     // define description variable
                     const description = document.createElement("p");
@@ -80,6 +80,6 @@ function autoRequest() {
         xhr.send();
     };
     // set the auto requests interval
-    setInterval(sender, 60 * 1e3);
+    setInterval(sender, 30 * 1e3);
 }
 autoRequest();

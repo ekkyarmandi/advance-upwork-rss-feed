@@ -1,0 +1,41 @@
+body {
+    background-color: whitesmoke;
+}
+.main-container,
+.earning-container {
+    background-color: white;
+}
+.side-container {
+    width: 200px;
+}
+[name="update-earnings"] {
+    background-color: #14a800;
+}
+[name="update-earnings"]:hover {
+    background-color: #128802;
+}
+#earning {
+    font-size: 18px;
+}
+#budget {
+    font-size: 14px;
+    color: gray;
+}
+[name="tag"]:hover {
+    background-color: #c9c9c9;
+}
+a#title {
+    text-decoration: none;
+    color: black;
+}
+a#title:hover,
+#feed-profile:hover,
+.green-text {
+    color: #14a800;
+}
+.badge {
+    background-color: #f2f2f2;
+    color: #969696;
+    font-size: 14px;
+    font-weight: normal;
+}

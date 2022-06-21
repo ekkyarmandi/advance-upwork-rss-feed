@@ -1,0 +1,50 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Feed Profile</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="static/css/profile-style.css" />
+    </head>
+    <body>
+        <div class="main container w-50 rounded-3 border my-5">
+            <div class="heading text-center pt-4">
+                <h1>My Feed Profile</h1>
+                <p>Advance Feed RSS</p>
+                <hr />
+            </div>
+            <div class="container settings">
+                <div class="keywords-container">
+                    <h4>Keywords</h4>
+                    <p>Collect all search results based on keywords</p>
+                    <div class="badges" id="keyword-badges"></div>
+                </div>
+                <hr />
+                <div class="title-container">
+                    <h4>Titles</h4>
+                    <p>Filter search results based on it's title</p>
+                    <div class="badges" id="title-badges"></div>
+                </div>
+                <hr />
+                <div class="skills-container">
+                    <h4>Skills</h4>
+                    <p>Filter search results based on skills tag</p>
+                    <div class="badges" id="skill-badges"></div>
+                </div>
+                <hr />
+                <di class="categories-container">
+                    <h4>Categories</h4>
+                    <p>Filter search results based on job categories</p>
+                    <div class="badges" id="category-badges"></div>
+                </di>
+                <hr />
+                <div class="mb-4 d-flex justify-content-end">
+                    <button class="btn btn-primary">Save Configuration</button>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="module" src="/static/js/profile.js"></script>
+    </body>
+</html>

@@ -1,17 +1,24 @@
-var prevResults;
 var alertInterval;
+var prevResults;
 var myInterval;
 var activated = false;
 
 function notify() {
     let alert = false;
     let title = "UpWork RSS Feed | Ekky Armandi";
-    let currentResults = document.getElementById("results").getAttribute("value");
-    let count = currentResults - prevResults;
     alertInterval = setInterval(() => {
+        let currentResults = document.getElementById("results").getAttribute("value");
+        let count = currentResults - prevResults;
         document.title = alert ? title : "(" + count + ") New Jobs Post | " + title;
         alert = !alert;
     }, 1000);
+}
+
+function destroyAsterix() {
+    let allAsterix = document.querySelectorAll("#red-asterix");
+    allAsterix.forEach((asterix) => {
+        asterix.innerHTML = "";
+    });
 }
 
 window.onfocus = () => {
@@ -20,6 +27,7 @@ window.onfocus = () => {
     activated = false;
     clearInterval(alertInterval);
     document.title = "UpWork RSS Feed | Ekky Armandi";
+    setTimeout(destroyAsterix, 10000);
 };
 
 window.onblur = () => {
