@@ -7,7 +7,7 @@ function notify() {
     let alert = false;
     let title = "UpWork RSS Feed | Ekky Armandi";
     alertInterval = setInterval(() => {
-        let currentResults = document.getElementById("results").getAttribute("value");
+        let currentResults = document.getElementById("jobs-found").getAttribute("value");
         let count = currentResults - prevResults;
         document.title = alert ? title : "(" + count + ") New Jobs Post | " + title;
         alert = !alert;
@@ -32,12 +32,12 @@ window.onfocus = () => {
 
 window.onblur = () => {
     // define the prevResults as value from results id
-    prevResults = document.getElementById("results").getAttribute("value");
+    prevResults = document.getElementById("jobs-found").getAttribute("value");
     prevResults = parseInt(prevResults);
 };
 
 myInterval = setInterval(() => {
-    let currentResults = document.getElementById("results").getAttribute("value");
+    let currentResults = document.getElementById("jobs-found").getAttribute("value");
     currentResults = parseInt(currentResults);
     // console.log("Now: " + currentResults + ", Before: " + prevResults);
     if ((currentResults > prevResults) & (prevResults > 0) & !activated) {

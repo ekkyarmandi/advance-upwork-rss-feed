@@ -6,7 +6,13 @@ body {
     background-color: white;
 }
 .side-container {
-    width: 200px;
+    width: 250px;
+}
+.badge#usd,
+.badge#idr,
+.badge#usd_idr_rate,
+.badge#avail_date {
+    color: #14a800;
 }
 [name="update-earnings"] {
     background-color: #14a800;
