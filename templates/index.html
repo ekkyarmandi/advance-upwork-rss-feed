@@ -54,33 +54,33 @@
                             <hr class="my-0" />
                         </div>
                         <div style="min-height: 105px">
-                            <table class="fw-semibold green-text m-2" hidden id="earning-table">
+                            <table class="fw-semibold green-text m-2" id="earning-table">
                                 <tr>
                                     <td>in USD</td>
                                     <td>:</td>
                                     <td>
-                                        <div class="badge" id="usd">$0</div>
+                                        <div class="badge" id="usd">{{formated_usd}}</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>in IDR</td>
                                     <td>:</td>
                                     <td>
-                                        <div class="badge" id="idr">Rp0</div>
+                                        <div class="badge" id="idr">{{formated_idr}}</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>IDR Rate</td>
                                     <td>:</td>
                                     <td>
-                                        <div class="badge" id="usd_idr_rate">Rp0</div>
+                                        <div class="badge" id="usd_idr_rate">{{usd_idr_rate}}</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Avail Date</td>
                                     <td>:</td>
                                     <td>
-                                        <div class="badge" id="avail_date">N/A</div>
+                                        <div class="badge" id="avail_date">{{avail_date}}</div>
                                     </td>
                                 </tr>
                             </table>
