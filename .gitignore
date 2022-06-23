@@ -1,3 +1,6 @@
 *__pycache__/
 archive/
 project/
+*credentials.py
+bfg-1.14.0.jar
+secret.txt
