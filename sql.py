@@ -125,9 +125,32 @@ def reset(database: str, table: str = "jobs") -> None:
     con.commit()
     con.close()
 
+def execute(cmd:str, database:str="data/jobs.db", fetch:bool=False, one=False) -> None:
+    '''Execute SQL query directly from the function'''
+
+    with sqlite3.connect(database) as con:
+        cur = con.cursor()
+        cur.execute(cmd)
+        if fetch and one:
+            return cur.fetchone()
+        elif fetch and not one:
+            return cur.fetchall()
+        con.commit()
+
 if __name__ == "__main__":
 
+    ## query test
     # reset("data/jobs.db")
     # data = query_all("data/jobs.db")
     # print(data[-1])
+
+    ## clear database test
     clear("data/jobs.db")
+
+    ## excute cmd test
+    # output = execute(
+    #     "SELECT usd,usd_idr_rate,usd*usd_idr_rate,avail_date FROM earnings WHERE created_time=(select max(created_time) from earnings);",
+    #     fetch=True,
+    #     one=True
+    # )
+    # print(output)

@@ -1,11 +1,10 @@
 '''
 Return available current earnings from UpWork in my Notion Database. Including updating it's convertion rates and available dates.
 '''
+from controller.credentials import NOTION_KEY
 from forex_python.converter import CurrencyRates
-from credentials import NOTION_KEY
 from datetime import datetime
 import requests
-
 
 def query(database_id, filter={}):
     api_url = f"https://api.notion.com/v1/databases/{database_id}/query"
@@ -71,6 +70,7 @@ def query_earnings():
         usd_idr=idr_rate,
         avail_date=avail_date.strftime("%d %b %Y")
     )
+
 
 if __name__ == "__main__":
 
